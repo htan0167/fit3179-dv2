@@ -1,0 +1,244 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 330,
+  "background": "#fffefa",
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "config": {
+    "font": "Source Sans 3, Arial, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": "normal",
+      "labelColor": "#64736c",
+      "titleColor": "#203c38",
+      "gridColor": "#e8e7df",
+      "domain": false,
+      "tickColor": "#d6ddd7",
+      "labelPadding": 7,
+      "titlePadding": 12
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": "normal",
+      "labelLimit": 1000,
+      "titleLimit": 1000,
+      "orient": "bottom",
+      "labelColor": "#203c38",
+      "titleColor": "#203c38",
+      "padding": 8
+    },
+    "title": {
+      "fontSize": 14,
+      "anchor": "start",
+      "color": "#203c38"
+    },
+    "text": {
+      "fontSize": 12,
+      "color": "#203c38"
+    }
+  },
+  "data": {
+    "url": "data/cultural_attendance_change.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "before": "number",
+        "after": "number",
+        "change": "number"
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 3,
+        "color": "#c6ccc3"
+      },
+      "encoding": {
+        "x": {
+          "field": "after",
+          "type": "quantitative",
+          "title": "Adults attending at least one venue or event (%)",
+          "scale": {
+            "domain": [
+              0,
+              100
+            ]
+          },
+          "axis": {
+            "values": [
+              0,
+              20,
+              40,
+              60,
+              80,
+              100
+            ]
+          }
+        },
+        "x2": {
+          "field": "before"
+        },
+        "y": {
+          "field": "state_code",
+          "type": "nominal",
+          "sort": [
+            "VIC",
+            "ACT",
+            "NSW",
+            "QLD",
+            "WA",
+            "SA",
+            "TAS",
+            "NT"
+          ],
+          "title": null
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "Jurisdiction"
+          },
+          {
+            "field": "before",
+            "type": "quantitative",
+            "title": "2017–18 attendance (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "after",
+            "type": "quantitative",
+            "title": "2021–22 attendance (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "change",
+            "type": "quantitative",
+            "title": "Change (percentage points)",
+            "format": "+.1f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/cultural_attendance_long.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "rate": "number"
+          }
+        }
+      },
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 100,
+        "opacity": 1
+      },
+      "encoding": {
+        "x": {
+          "field": "rate",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "state_code",
+          "type": "nominal",
+          "sort": [
+            "VIC",
+            "ACT",
+            "NSW",
+            "QLD",
+            "WA",
+            "SA",
+            "TAS",
+            "NT"
+          ]
+        },
+        "color": {
+          "field": "period",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "2017–18",
+              "2021–22"
+            ],
+            "range": [
+              "#84958a",
+              "#b45841"
+            ]
+          },
+          "legend": {
+            "title": null,
+            "symbolType": "circle"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "Jurisdiction"
+          },
+          {
+            "field": "period",
+            "type": "nominal",
+            "title": "Survey period"
+          },
+          {
+            "field": "rate",
+            "type": "quantitative",
+            "title": "Attendance (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "calculate": "format(datum.change,'.1f') + ' pp'",
+          "as": "label"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "fontSize": 11,
+        "color": "#b45841"
+      },
+      "encoding": {
+        "x": {
+          "datum": 99,
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "state_code",
+          "type": "nominal",
+          "sort": [
+            "VIC",
+            "ACT",
+            "NSW",
+            "QLD",
+            "WA",
+            "SA",
+            "TAS",
+            "NT"
+          ]
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    }
+  ]
+}

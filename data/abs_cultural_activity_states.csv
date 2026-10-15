@@ -1,0 +1,17 @@
+state,state_code,year,participation_pct,attendance_pct
+New South Wales,NSW,2017-18,32.0,81.1
+New South Wales,NSW,2021-22,31.7,61.9
+Victoria,VIC,2017-18,32.9,84.3
+Victoria,VIC,2021-22,33.1,60.9
+Queensland,QLD,2017-18,27.8,81.0
+Queensland,QLD,2021-22,30.8,64.8
+South Australia,SA,2017-18,28.4,81.7
+South Australia,SA,2021-22,30.0,67.8
+Western Australia,WA,2017-18,30.9,83.4
+Western Australia,WA,2021-22,31.9,69.3
+Tasmania,TAS,2017-18,39.4,80.3
+Tasmania,TAS,2021-22,41.9,68.0
+Northern Territory,NT,2017-18,25.0,76.2
+Northern Territory,NT,2021-22,29.7,68.8
+Australian Capital Territory,ACT,2017-18,45.0,92.5
+Australian Capital Territory,ACT,2021-22,45.4,71.6

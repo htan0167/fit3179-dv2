@@ -1,0 +1,25 @@
+state,state_code,measure,value,scaled,order,period
+New South Wales,NSW,Employment growth,19.634446,0.551493841754822,0,2008–09 to 2021–22
+New South Wales,NSW,Participation,31.7,0.634,1,2021–22
+New South Wales,NSW,Attendance,61.9,0.619,2,2021–22
+Victoria,VIC,Employment growth,44.236763,0.8248529199108008,0,2008–09 to 2021–22
+Victoria,VIC,Participation,33.1,0.662,1,2021–22
+Victoria,VIC,Attendance,60.9,0.609,2,2021–22
+Queensland,QLD,Employment growth,15.23896,0.5026551135208196,0,2008–09 to 2021–22
+Queensland,QLD,Participation,30.8,0.616,1,2021–22
+Queensland,QLD,Attendance,64.8,0.648,2,2021–22
+South Australia,SA,Employment growth,-2.884986,0.3012779316281262,0,2008–09 to 2021–22
+South Australia,SA,Participation,30.0,0.6,1,2021–22
+South Australia,SA,Attendance,67.8,0.6779999999999999,2,2021–22
+Western Australia,WA,Employment growth,11.203706,0.457818957432898,0,2008–09 to 2021–22
+Western Australia,WA,Participation,31.9,0.638,1,2021–22
+Western Australia,WA,Attendance,69.3,0.693,2,2021–22
+Tasmania,TAS,Employment growth,7.377913,0.4153101456064331,0,2008–09 to 2021–22
+Tasmania,TAS,Participation,41.9,0.838,1,2021–22
+Tasmania,TAS,Attendance,68.0,0.68,2,2021–22
+Northern Territory,NT,Employment growth,-10.430887,0.21743458475540384,0,2008–09 to 2021–22
+Northern Territory,NT,Participation,29.7,0.594,1,2021–22
+Northern Territory,NT,Attendance,68.8,0.688,2,2021–22
+Australian Capital Territory,ACT,Employment growth,-20.700874,0.10332362479601744,0,2008–09 to 2021–22
+Australian Capital Territory,ACT,Participation,45.4,0.9079999999999999,1,2021–22
+Australian Capital Territory,ACT,Attendance,71.6,0.716,2,2021–22

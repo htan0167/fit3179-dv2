@@ -1,0 +1,198 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 255,
+  "background": "#fffefa",
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "config": {
+    "font": "Source Sans 3, Arial, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": "normal",
+      "labelColor": "#64736c",
+      "titleColor": "#203c38",
+      "gridColor": "#e8e7df",
+      "domain": false,
+      "tickColor": "#d6ddd7",
+      "labelPadding": 7,
+      "titlePadding": 12
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": "normal",
+      "labelLimit": 1000,
+      "titleLimit": 1000,
+      "orient": "bottom",
+      "labelColor": "#203c38",
+      "titleColor": "#203c38",
+      "padding": 8
+    },
+    "title": {
+      "fontSize": 14,
+      "anchor": "start",
+      "color": "#203c38"
+    },
+    "text": {
+      "fontSize": 12,
+      "color": "#203c38"
+    }
+  },
+  "data": {
+    "sequence": {
+      "start": 0,
+      "stop": 1000,
+      "as": "unit"
+    }
+  },
+  "params": [
+    {
+      "name": "waffleYear",
+      "value": "2023-24",
+      "bind": {
+        "input": "select",
+        "options": [
+          "2008-09",
+          "2009-10",
+          "2010-11",
+          "2011-12",
+          "2012-13",
+          "2013-14",
+          "2014-15",
+          "2015-16",
+          "2016-17",
+          "2017-18",
+          "2018-19",
+          "2019-20",
+          "2020-21",
+          "2021-22",
+          "2022-23",
+          "2023-24"
+        ],
+        "name": "Financial year: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "calculate": "waffleYear",
+      "as": "year"
+    },
+    {
+      "lookup": "year",
+      "from": {
+        "data": {
+          "url": "data/workforce_trends_for_charts.csv",
+          "format": {
+            "type": "csv",
+            "parse": {
+              "specialised": "number",
+              "support": "number",
+              "embedded": "number",
+              "total": "number",
+              "share_of_total_employment_pct": "number",
+              "start_year": "number"
+            }
+          }
+        },
+        "key": "year",
+        "fields": [
+          "share_of_total_employment_pct"
+        ]
+      }
+    },
+    {
+      "calculate": "datum.unit % 50",
+      "as": "col"
+    },
+    {
+      "calculate": "floor(datum.unit / 50)",
+      "as": "row"
+    },
+    {
+      "calculate": "datum.col + 0.83",
+      "as": "col2"
+    },
+    {
+      "calculate": "datum.row + 0.80",
+      "as": "row2"
+    },
+    {
+      "calculate": "datum.unit < round(datum.share_of_total_employment_pct * 10) ? 'Cultural & creative' : 'All other employment'",
+      "as": "group"
+    }
+  ],
+  "mark": {
+    "type": "rect"
+  },
+  "encoding": {
+    "x": {
+      "field": "col",
+      "type": "quantitative",
+      "axis": null,
+      "scale": {
+        "domain": [
+          0,
+          50
+        ]
+      }
+    },
+    "x2": {
+      "field": "col2"
+    },
+    "y": {
+      "field": "row",
+      "type": "quantitative",
+      "axis": null,
+      "scale": {
+        "domain": [
+          0,
+          20
+        ],
+        "reverse": true
+      }
+    },
+    "y2": {
+      "field": "row2"
+    },
+    "color": {
+      "field": "group",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "Cultural & creative",
+          "All other employment"
+        ],
+        "range": [
+          "#17685f",
+          "#e9e5dc"
+        ]
+      },
+      "legend": {
+        "title": null,
+        "symbolType": "square",
+        "columns": 1
+      }
+    },
+    "tooltip": [
+      {
+        "field": "year",
+        "type": "nominal",
+        "title": "Financial year"
+      },
+      {
+        "field": "share_of_total_employment_pct",
+        "type": "quantitative",
+        "title": "Cultural & creative share (%)",
+        "format": ".1f"
+      }
+    ]
+  }
+}

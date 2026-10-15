@@ -1,0 +1,76 @@
+[
+  {
+    "id": "Australia",
+    "parent": null,
+    "value": 0,
+    "label": "Australia"
+  },
+  {
+    "id": "Eastern centres",
+    "parent": "Australia",
+    "value": 0,
+    "label": "NSW + Victoria"
+  },
+  {
+    "id": "Other jurisdictions",
+    "parent": "Australia",
+    "value": 0,
+    "label": "Other jurisdictions"
+  },
+  {
+    "id": "NSW",
+    "parent": "Eastern centres",
+    "value": 213484,
+    "label": "NSW",
+    "state": "New South Wales"
+  },
+  {
+    "id": "VIC",
+    "parent": "Eastern centres",
+    "value": 174483,
+    "label": "VIC",
+    "state": "Victoria"
+  },
+  {
+    "id": "QLD",
+    "parent": "Other jurisdictions",
+    "value": 99599,
+    "label": "QLD",
+    "state": "Queensland"
+  },
+  {
+    "id": "SA",
+    "parent": "Other jurisdictions",
+    "value": 29251,
+    "label": "SA",
+    "state": "South Australia"
+  },
+  {
+    "id": "WA",
+    "parent": "Other jurisdictions",
+    "value": 48959,
+    "label": "WA",
+    "state": "Western Australia"
+  },
+  {
+    "id": "TAS",
+    "parent": "Other jurisdictions",
+    "value": 11106,
+    "label": "TAS",
+    "state": "Tasmania"
+  },
+  {
+    "id": "NT",
+    "parent": "Other jurisdictions",
+    "value": 3892,
+    "label": "NT",
+    "state": "Northern Territory"
+  },
+  {
+    "id": "ACT",
+    "parent": "Other jurisdictions",
+    "value": 10527,
+    "label": "ACT",
+    "state": "Australian Capital Territory"
+  }
+]

@@ -1,0 +1,475 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "width": 880,
+  "height": 360,
+  "padding": {
+    "left": 14,
+    "right": 14,
+    "top": 58,
+    "bottom": 15
+  },
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "background": "#fffefa",
+  "signals": [
+    {
+      "name": "stateChoice",
+      "value": "VIC",
+      "bind": {
+        "input": "select",
+        "options": [
+          "NSW",
+          "VIC",
+          "QLD",
+          "SA",
+          "WA",
+          "TAS",
+          "NT",
+          "ACT"
+        ],
+        "name": "Highlight jurisdiction: "
+      }
+    }
+  ],
+  "data": [
+    {
+      "name": "profiles",
+      "url": "data/state_profiles_2021_22.csv",
+      "format": {
+        "type": "csv",
+        "parse": {
+          "value": "number",
+          "scaled": "number",
+          "order": "number"
+        }
+      }
+    },
+    {
+      "name": "selected",
+      "source": "profiles",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.state_code === stateChoice"
+        }
+      ]
+    },
+    {
+      "name": "ticks",
+      "values": [
+        {
+          "order": 0,
+          "value": -30,
+          "scaled": 0.0
+        },
+        {
+          "order": 0,
+          "value": 0,
+          "scaled": 0.3333333333333333
+        },
+        {
+          "order": 0,
+          "value": 30,
+          "scaled": 0.6666666666666666
+        },
+        {
+          "order": 0,
+          "value": 60,
+          "scaled": 1.0
+        },
+        {
+          "order": 1,
+          "value": 0,
+          "scaled": 0.0
+        },
+        {
+          "order": 1,
+          "value": 10,
+          "scaled": 0.2
+        },
+        {
+          "order": 1,
+          "value": 20,
+          "scaled": 0.4
+        },
+        {
+          "order": 1,
+          "value": 30,
+          "scaled": 0.6
+        },
+        {
+          "order": 1,
+          "value": 40,
+          "scaled": 0.8
+        },
+        {
+          "order": 1,
+          "value": 50,
+          "scaled": 1.0
+        },
+        {
+          "order": 2,
+          "value": 0,
+          "scaled": 0.0
+        },
+        {
+          "order": 2,
+          "value": 20,
+          "scaled": 0.2
+        },
+        {
+          "order": 2,
+          "value": 40,
+          "scaled": 0.4
+        },
+        {
+          "order": 2,
+          "value": 60,
+          "scaled": 0.6
+        },
+        {
+          "order": 2,
+          "value": 80,
+          "scaled": 0.8
+        },
+        {
+          "order": 2,
+          "value": 100,
+          "scaled": 1.0
+        }
+      ]
+    },
+    {
+      "name": "axes",
+      "values": [
+        {
+          "order": 0,
+          "title": [
+            "Employment growth",
+            "2008–09 to 2021–22 (%)"
+          ]
+        },
+        {
+          "order": 1,
+          "title": [
+            "Participation",
+            "2021–22 (%)"
+          ]
+        },
+        {
+          "order": 2,
+          "title": [
+            "Attendance",
+            "2021–22 (%)"
+          ]
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "x",
+      "type": "linear",
+      "domain": [
+        0,
+        2
+      ],
+      "range": [
+        40,
+        {
+          "signal": "width-48"
+        }
+      ],
+      "zero": false
+    },
+    {
+      "name": "y",
+      "type": "linear",
+      "domain": [
+        0,
+        1
+      ],
+      "range": [
+        {
+          "signal": "height-15"
+        },
+        15
+      ],
+      "zero": false
+    }
+  ],
+  "marks": [
+    {
+      "type": "rule",
+      "from": {
+        "data": "axes"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "scale": "x",
+            "field": "order"
+          },
+          "y": {
+            "value": 15
+          },
+          "y2": {
+            "signal": "height-15"
+          },
+          "stroke": {
+            "value": "#aebbb1"
+          },
+          "strokeWidth": {
+            "value": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "rule",
+      "from": {
+        "data": "ticks"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "scale": "x",
+            "field": "order",
+            "offset": -4
+          },
+          "x2": {
+            "scale": "x",
+            "field": "order",
+            "offset": 4
+          },
+          "y": {
+            "scale": "y",
+            "field": "scaled"
+          },
+          "stroke": {
+            "value": "#aebbb1"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "ticks"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "scale": "x",
+            "field": "order",
+            "offset": -8
+          },
+          "y": {
+            "scale": "y",
+            "field": "scaled"
+          },
+          "align": {
+            "value": "right"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "text": {
+            "signal": "format(datum.value,'.0f')"
+          },
+          "font": {
+            "value": "Source Sans 3"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#64736c"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "axes"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "scale": "x",
+            "field": "order"
+          },
+          "y": {
+            "value": -34
+          },
+          "text": {
+            "field": "title"
+          },
+          "align": {
+            "value": "center"
+          },
+          "lineHeight": {
+            "value": 17
+          },
+          "font": {
+            "value": "Source Sans 3"
+          },
+          "fontSize": {
+            "signal": "width < 500 ? 9 : 13"
+          },
+          "fill": {
+            "value": "#203c38"
+          },
+          "fontWeight": {
+            "value": "bold"
+          }
+        }
+      }
+    },
+    {
+      "type": "group",
+      "from": {
+        "facet": {
+          "name": "stateLine",
+          "data": "profiles",
+          "groupby": [
+            "state_code"
+          ]
+        }
+      },
+      "marks": [
+        {
+          "type": "line",
+          "from": {
+            "data": "stateLine"
+          },
+          "sort": {
+            "field": "order"
+          },
+          "encode": {
+            "update": {
+              "x": {
+                "scale": "x",
+                "field": "order"
+              },
+              "y": {
+                "scale": "y",
+                "field": "scaled"
+              },
+              "stroke": {
+                "value": "#adb8ad"
+              },
+              "strokeWidth": {
+                "value": 1.4
+              },
+              "opacity": {
+                "value": 0.35
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "line",
+      "from": {
+        "data": "selected"
+      },
+      "sort": {
+        "field": "order"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "scale": "x",
+            "field": "order"
+          },
+          "y": {
+            "scale": "y",
+            "field": "scaled"
+          },
+          "stroke": {
+            "value": "#17685f"
+          },
+          "strokeWidth": {
+            "value": 3
+          }
+        }
+      }
+    },
+    {
+      "type": "symbol",
+      "from": {
+        "data": "selected"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "scale": "x",
+            "field": "order"
+          },
+          "y": {
+            "scale": "y",
+            "field": "scaled"
+          },
+          "size": {
+            "value": 90
+          },
+          "fill": {
+            "value": "#17685f"
+          },
+          "stroke": {
+            "value": "#fffefa"
+          },
+          "strokeWidth": {
+            "value": 1.2
+          },
+          "tooltip": {
+            "signal": "{'Jurisdiction':datum.state,'Measure':datum.measure,'Period':datum.period,'Percent':format(datum.value,'.1f')}"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "selected"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "scale": "x",
+            "field": "order",
+            "offset": 9
+          },
+          "y": {
+            "scale": "y",
+            "field": "scaled",
+            "offset": -11
+          },
+          "text": {
+            "signal": "format(datum.value,'.1f') + '%'"
+          },
+          "align": {
+            "signal": "datum.order === 2 ? 'right' : 'left'"
+          },
+          "font": {
+            "value": "Source Sans 3"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fontWeight": {
+            "value": "bold"
+          },
+          "fill": {
+            "value": "#17685f"
+          }
+        }
+      }
+    }
+  ]
+}

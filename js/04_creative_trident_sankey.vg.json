@@ -1,0 +1,147 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "width": 880,
+  "height": 320,
+  "padding": {
+    "top": 40,
+    "bottom": 30,
+    "left": 10,
+    "right": 10
+  },
+  "background": "#fffefa",
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "signals": [
+    {
+      "name": "hoverRole",
+      "value": null,
+      "on": [
+        {
+          "events": "@ribbons:pointerover",
+          "update": "datum.role"
+        },
+        {
+          "events": "@ribbons:pointerout",
+          "update": "null"
+        }
+      ]
+    }
+  ],
+  "data": [
+    {
+      "name": "nodes",
+      "url": "data/trident_nodes.csv",
+      "format": {
+        "type": "csv",
+        "parse": {
+          "y0": "number",
+          "y1": "number",
+          "workers": "number"
+        }
+      }
+    },
+    {
+      "name": "links",
+      "url": "data/trident_links.csv",
+      "format": {
+        "type": "csv",
+        "parse": {
+          "workers": "number",
+          "a0": "number",
+          "a1": "number",
+          "b0": "number",
+          "b1": "number"
+        }
+      }
+    }
+  ],
+  "marks": [
+    {
+      "type": "path",
+      "name": "ribbons",
+      "from": {
+        "data": "links"
+      },
+      "encode": {
+        "update": {
+          "path": {
+            "signal": "'M14,' + (datum.a0*height) + 'C' + (width*0.48) + ',' + (datum.a0*height) + ' ' + (width*0.52) + ',' + (datum.b0*height) + ' ' + (width-14) + ',' + (datum.b0*height) + 'L' + (width-14) + ',' + (datum.b1*height) + 'C' + (width*0.52) + ',' + (datum.b1*height) + ' ' + (width*0.48) + ',' + (datum.a1*height) + ' 14,' + (datum.a1*height) + 'Z'"
+          },
+          "fill": {
+            "field": "color"
+          },
+          "fillOpacity": {
+            "signal": "hoverRole === null || hoverRole === datum.role ? 0.72 : 0.14"
+          },
+          "tooltip": {
+            "signal": "{'Worker type':datum.role,'Workers':format(datum.workers,','),'Share':format(datum.workers/591302,'.1%')}"
+          }
+        }
+      }
+    },
+    {
+      "type": "rect",
+      "from": {
+        "data": "nodes"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "datum.side === 'left' ? 0 : width-14"
+          },
+          "width": {
+            "value": 14
+          },
+          "y": {
+            "signal": "datum.y0 * height"
+          },
+          "y2": {
+            "signal": "datum.y1 * height"
+          },
+          "fill": {
+            "value": "#203c38"
+          },
+          "tooltip": {
+            "signal": "{'Category':datum.name,'Workers':format(datum.workers,',')}"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "nodes"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "datum.side === 'left' ? 18 : width-18"
+          },
+          "y": {
+            "signal": "datum.y0 * height + 16"
+          },
+          "text": {
+            "signal": "width < 500 ? replace(datum.name, 'Cultural & creative', 'Creative') : datum.name"
+          },
+          "align": {
+            "signal": "datum.side === 'left' ? 'left' : 'right'"
+          },
+          "fill": {
+            "value": "#203c38"
+          },
+          "font": {
+            "value": "Source Sans 3"
+          },
+          "fontSize": {
+            "signal": "width < 500 ? 10 : 13"
+          },
+          "fontWeight": {
+            "value": "bold"
+          }
+        }
+      }
+    }
+  ]
+}

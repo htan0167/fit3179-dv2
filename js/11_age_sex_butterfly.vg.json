@@ -1,0 +1,195 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 350,
+  "background": "#fffefa",
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "config": {
+    "font": "Source Sans 3, Arial, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": "normal",
+      "labelColor": "#64736c",
+      "titleColor": "#203c38",
+      "gridColor": "#e8e7df",
+      "domain": false,
+      "tickColor": "#d6ddd7",
+      "labelPadding": 7,
+      "titlePadding": 12
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": "normal",
+      "labelLimit": 1000,
+      "titleLimit": 1000,
+      "orient": "bottom",
+      "labelColor": "#203c38",
+      "titleColor": "#203c38",
+      "padding": 8
+    },
+    "title": {
+      "fontSize": 14,
+      "anchor": "start",
+      "color": "#203c38"
+    },
+    "text": {
+      "fontSize": 12,
+      "color": "#203c38"
+    }
+  },
+  "data": {
+    "url": "data/cultural_participation_age_sex_long.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "signed_pct": "number",
+        "pct": "number"
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "size": 24
+      },
+      "encoding": {
+        "x": {
+          "field": "signed_pct",
+          "type": "quantitative",
+          "stack": null,
+          "title": "← Men     Participation rate (%)     Women →",
+          "scale": {
+            "domain": [
+              -60,
+              60
+            ]
+          },
+          "axis": {
+            "values": [
+              -60,
+              -40,
+              -20,
+              0,
+              20,
+              40,
+              60
+            ],
+            "labelExpr": "abs(datum.value)"
+          }
+        },
+        "y": {
+          "field": "age",
+          "type": "ordinal",
+          "sort": [
+            "15-24",
+            "25-34",
+            "35-44",
+            "45-54",
+            "55-64",
+            "65 and over"
+          ],
+          "title": "Age group"
+        },
+        "color": {
+          "field": "sex",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Men",
+              "Women"
+            ],
+            "range": [
+              "#17685f",
+              "#b45841"
+            ]
+          },
+          "legend": {
+            "title": null
+          }
+        },
+        "tooltip": [
+          {
+            "field": "age",
+            "type": "nominal",
+            "title": "Age group"
+          },
+          {
+            "field": "sex",
+            "type": "nominal",
+            "title": "Sex"
+          },
+          {
+            "field": "pct",
+            "type": "quantitative",
+            "title": "Participation (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "zero": 0
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 1.2,
+        "color": "#203c38"
+      },
+      "encoding": {
+        "x": {
+          "field": "zero",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "calculate": "datum.signed_pct / 2",
+          "as": "label_x"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 10,
+        "color": "#fffefa"
+      },
+      "encoding": {
+        "x": {
+          "field": "label_x",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "age",
+          "type": "ordinal",
+          "sort": [
+            "15-24",
+            "25-34",
+            "35-44",
+            "45-54",
+            "55-64",
+            "65 and over"
+          ]
+        },
+        "text": {
+          "field": "pct",
+          "format": ".1f"
+        }
+      }
+    }
+  ]
+}

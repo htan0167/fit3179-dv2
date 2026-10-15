@@ -1,0 +1,205 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 350,
+  "background": "#fffefa",
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "config": {
+    "font": "Source Sans 3, Arial, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": "normal",
+      "labelColor": "#64736c",
+      "titleColor": "#203c38",
+      "gridColor": "#e8e7df",
+      "domain": false,
+      "tickColor": "#d6ddd7",
+      "labelPadding": 7,
+      "titlePadding": 12
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": "normal",
+      "labelLimit": 1000,
+      "titleLimit": 1000,
+      "orient": "bottom",
+      "labelColor": "#203c38",
+      "titleColor": "#203c38",
+      "padding": 8
+    },
+    "title": {
+      "fontSize": 14,
+      "anchor": "start",
+      "color": "#203c38"
+    },
+    "text": {
+      "fontSize": 12,
+      "color": "#203c38"
+    }
+  },
+  "data": {
+    "url": "data/cultural_participation_tiles.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "participation_pct": "number",
+        "attendance_pct": "number",
+        "col": "number",
+        "row": "number"
+      }
+    }
+  },
+  "params": [
+    {
+      "name": "activityYear",
+      "value": "2021-22",
+      "bind": {
+        "input": "select",
+        "options": [
+          "2017-18",
+          "2021-22"
+        ],
+        "name": "Survey period: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "datum.year === activityYear"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "col",
+      "type": "ordinal",
+      "axis": null,
+      "scale": {
+        "domain": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "padding": 0.045
+      }
+    },
+    "y": {
+      "field": "row",
+      "type": "ordinal",
+      "axis": null,
+      "scale": {
+        "domain": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "padding": 0.045
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "cornerRadius": 3
+      },
+      "encoding": {
+        "color": {
+          "field": "participation_pct",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              20,
+              50
+            ],
+            "range": [
+              "#e9eee0",
+              "#17685f"
+            ]
+          },
+          "legend": {
+            "title": "Adults participating (%)",
+            "values": [
+              20,
+              30,
+              40,
+              50
+            ]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "Jurisdiction"
+          },
+          {
+            "field": "year",
+            "type": "nominal",
+            "title": "Survey period"
+          },
+          {
+            "field": "participation_pct",
+            "type": "quantitative",
+            "title": "Adults participating (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "dy": -8,
+        "fontSize": 13,
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "text": {
+          "field": "state_code"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.participation_pct >= 35",
+            "value": "#fffefa"
+          },
+          "value": "#203c38"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "calculate": "format(datum.participation_pct,'.1f') + '%'",
+          "as": "label"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "dy": 13,
+        "fontSize": 12
+      },
+      "encoding": {
+        "text": {
+          "field": "label"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.participation_pct >= 35",
+            "value": "#fffefa"
+          },
+          "value": "#203c38"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,405 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "#fffefa",
+  "autosize": {
+    "type": "pad",
+    "contains": "padding"
+  },
+  "config": {
+    "font": "Source Sans 3, Arial, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": "normal",
+      "labelColor": "#64736c",
+      "titleColor": "#203c38",
+      "gridColor": "#e8e7df",
+      "domain": false,
+      "tickColor": "#d6ddd7",
+      "labelPadding": 7,
+      "titlePadding": 12
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": "normal",
+      "labelLimit": 1000,
+      "titleLimit": 1000,
+      "orient": "bottom",
+      "labelColor": "#203c38",
+      "titleColor": "#203c38",
+      "padding": 8
+    },
+    "title": {
+      "fontSize": 14,
+      "anchor": "start",
+      "color": "#203c38"
+    },
+    "text": {
+      "fontSize": 12,
+      "color": "#203c38"
+    }
+  },
+  "data": {
+    "url": "data/workforce_trends_for_charts.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "specialised": "number",
+        "support": "number",
+        "embedded": "number",
+        "total": "number",
+        "share_of_total_employment_pct": "number",
+        "start_year": "number"
+      }
+    }
+  },
+  "spacing": 12,
+  "vconcat": [
+    {
+      "width": "container",
+      "height": 280,
+      "layer": [
+        {
+          "mark": {
+            "type": "line",
+            "color": "#17685f",
+            "strokeWidth": 3,
+            "clip": true
+          },
+          "encoding": {
+            "x": {
+              "field": "start_year",
+              "type": "quantitative",
+              "title": null,
+              "scale": {
+                "domain": {
+                  "param": "timeWindow"
+                }
+              },
+              "axis": {
+                "values": [
+                  2008,
+                  2011,
+                  2014,
+                  2017,
+                  2020,
+                  2023
+                ],
+                "labelExpr": "datum.value + '–' + slice(toString(datum.value+1),2)",
+                "grid": false,
+                "labelAngle": 0
+              }
+            },
+            "y": {
+              "field": "total",
+              "type": "quantitative",
+              "title": "Main-job employment",
+              "scale": {
+                "domain": [
+                  0,
+                  650000
+                ]
+              },
+              "axis": {
+                "format": "~s",
+                "values": [
+                  0,
+                  100000,
+                  200000,
+                  300000,
+                  400000,
+                  500000,
+                  600000
+                ]
+              }
+            },
+            "tooltip": [
+              {
+                "field": "year",
+                "type": "nominal",
+                "title": "Financial year"
+              },
+              {
+                "field": "total",
+                "type": "quantitative",
+                "title": "Workers",
+                "format": ","
+              },
+              {
+                "field": "share_of_total_employment_pct",
+                "type": "quantitative",
+                "title": "Share of all employment (%)",
+                "format": ".1f"
+              }
+            ]
+          }
+        },
+        {
+          "mark": {
+            "type": "point",
+            "filled": true,
+            "color": "#17685f",
+            "size": 44,
+            "clip": true
+          },
+          "encoding": {
+            "x": {
+              "field": "start_year",
+              "type": "quantitative",
+              "title": null,
+              "scale": {
+                "domain": {
+                  "param": "timeWindow"
+                }
+              },
+              "axis": {
+                "values": [
+                  2008,
+                  2011,
+                  2014,
+                  2017,
+                  2020,
+                  2023
+                ],
+                "labelExpr": "datum.value + '–' + slice(toString(datum.value+1),2)",
+                "grid": false,
+                "labelAngle": 0
+              }
+            },
+            "y": {
+              "field": "total",
+              "type": "quantitative",
+              "title": "Main-job employment",
+              "scale": {
+                "domain": [
+                  0,
+                  650000
+                ]
+              },
+              "axis": {
+                "format": "~s",
+                "values": [
+                  0,
+                  100000,
+                  200000,
+                  300000,
+                  400000,
+                  500000,
+                  600000
+                ]
+              }
+            },
+            "tooltip": [
+              {
+                "field": "year",
+                "type": "nominal",
+                "title": "Financial year"
+              },
+              {
+                "field": "total",
+                "type": "quantitative",
+                "title": "Workers",
+                "format": ","
+              },
+              {
+                "field": "share_of_total_employment_pct",
+                "type": "quantitative",
+                "title": "Share of all employment (%)",
+                "format": ".1f"
+              }
+            ]
+          }
+        },
+        {
+          "transform": [
+            {
+              "filter": "datum.year === '2023-24'"
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "align": "right",
+            "dx": -5,
+            "dy": -17,
+            "fontSize": 15,
+            "fontWeight": "bold",
+            "color": "#17685f",
+            "clip": true
+          },
+          "encoding": {
+            "x": {
+              "field": "start_year",
+              "type": "quantitative",
+              "title": null,
+              "scale": {
+                "domain": {
+                  "param": "timeWindow"
+                }
+              },
+              "axis": {
+                "values": [
+                  2008,
+                  2011,
+                  2014,
+                  2017,
+                  2020,
+                  2023
+                ],
+                "labelExpr": "datum.value + '–' + slice(toString(datum.value+1),2)",
+                "grid": false,
+                "labelAngle": 0
+              }
+            },
+            "y": {
+              "field": "total",
+              "type": "quantitative",
+              "title": "Main-job employment",
+              "scale": {
+                "domain": [
+                  0,
+                  650000
+                ]
+              },
+              "axis": {
+                "format": "~s",
+                "values": [
+                  0,
+                  100000,
+                  200000,
+                  300000,
+                  400000,
+                  500000,
+                  600000
+                ]
+              }
+            },
+            "text": {
+              "field": "total",
+              "type": "quantitative",
+              "format": ","
+            }
+          }
+        },
+        {
+          "transform": [
+            {
+              "filter": "datum.year === '2020-21'"
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "align": "right",
+            "dx": -12,
+            "dy": 31,
+            "fontSize": 12,
+            "fontStyle": "italic",
+            "color": "#b45841",
+            "clip": true
+          },
+          "encoding": {
+            "x": {
+              "field": "start_year",
+              "type": "quantitative",
+              "title": null,
+              "scale": {
+                "domain": {
+                  "param": "timeWindow"
+                }
+              },
+              "axis": {
+                "values": [
+                  2008,
+                  2011,
+                  2014,
+                  2017,
+                  2020,
+                  2023
+                ],
+                "labelExpr": "datum.value + '–' + slice(toString(datum.value+1),2)",
+                "grid": false,
+                "labelAngle": 0
+              }
+            },
+            "y": {
+              "field": "total",
+              "type": "quantitative",
+              "title": "Main-job employment",
+              "scale": {
+                "domain": [
+                  0,
+                  650000
+                ]
+              },
+              "axis": {
+                "format": "~s",
+                "values": [
+                  0,
+                  100000,
+                  200000,
+                  300000,
+                  400000,
+                  500000,
+                  600000
+                ]
+              }
+            },
+            "text": {
+              "value": "2020–21: annual decline"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "width": "container",
+      "height": 48,
+      "params": [
+        {
+          "name": "timeWindow",
+          "select": {
+            "type": "interval",
+            "encodings": [
+              "x"
+            ]
+          }
+        }
+      ],
+      "mark": {
+        "type": "area",
+        "color": "#17685f",
+        "opacity": 0.25
+      },
+      "encoding": {
+        "x": {
+          "field": "start_year",
+          "type": "quantitative",
+          "title": "Financial year",
+          "axis": {
+            "values": [
+              2008,
+              2011,
+              2014,
+              2017,
+              2020,
+              2023
+            ],
+            "labelExpr": "datum.value + '–' + slice(toString(datum.value+1),2)",
+            "grid": false
+          }
+        },
+        "y": {
+          "field": "total",
+          "type": "quantitative",
+          "axis": null,
+          "scale": {
+            "zero": true
+          }
+        }
+      }
+    }
+  ]
+}

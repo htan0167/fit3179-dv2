@@ -1,0 +1,245 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "width": 880,
+  "height": 320,
+  "padding": 5,
+  "background": "#fffefa",
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "data": [
+    {
+      "name": "tree",
+      "transform": [
+        {
+          "type": "stratify",
+          "key": "id",
+          "parentKey": "parent"
+        },
+        {
+          "type": "treemap",
+          "field": "value",
+          "sort": {
+            "field": "value",
+            "order": "descending"
+          },
+          "method": "binary",
+          "size": [
+            {
+              "signal": "width"
+            },
+            {
+              "signal": "height"
+            }
+          ],
+          "round": true,
+          "paddingInner": 3,
+          "paddingOuter": 3,
+          "paddingTop": 24
+        }
+      ],
+      "url": "data/workforce_state_hierarchy.json",
+      "format": {
+        "type": "json"
+      }
+    },
+    {
+      "name": "groups",
+      "source": "tree",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.depth === 1"
+        }
+      ]
+    },
+    {
+      "name": "leaves",
+      "source": "tree",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.depth === 2"
+        }
+      ]
+    }
+  ],
+  "marks": [
+    {
+      "type": "rect",
+      "from": {
+        "data": "groups"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "field": "x0"
+          },
+          "y": {
+            "field": "y0"
+          },
+          "x2": {
+            "field": "x1"
+          },
+          "y2": {
+            "field": "y1"
+          },
+          "fill": {
+            "value": "#edf0e7"
+          },
+          "stroke": {
+            "value": "#fffefa"
+          }
+        }
+      }
+    },
+    {
+      "type": "rect",
+      "from": {
+        "data": "leaves"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "field": "x0"
+          },
+          "y": {
+            "field": "y0"
+          },
+          "x2": {
+            "field": "x1"
+          },
+          "y2": {
+            "field": "y1"
+          },
+          "fill": {
+            "signal": "datum.parent === 'Eastern centres' ? '#17685f' : '#b18736'"
+          },
+          "fillOpacity": {
+            "value": 0.92
+          },
+          "stroke": {
+            "value": "#fffefa"
+          },
+          "tooltip": {
+            "signal": "{'Jurisdiction':datum.state,'Workers':format(datum.value,','),'National share':format(datum.value/591302,'.1%')}"
+          }
+        },
+        "hover": {
+          "fillOpacity": {
+            "value": 0.65
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "groups"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "datum.x0+8"
+          },
+          "y": {
+            "signal": "datum.y0+15"
+          },
+          "text": {
+            "signal": "datum.x1-datum.x0 < 150 && datum.id === 'Other jurisdictions' ? 'Others' : datum.label"
+          },
+          "font": {
+            "value": "Source Sans 3"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fill": {
+            "value": "#203c38"
+          },
+          "fontWeight": {
+            "value": "bold"
+          },
+          "limit": {
+            "signal": "datum.x1-datum.x0-12"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "leaves"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "(datum.x0+datum.x1)/2"
+          },
+          "y": {
+            "signal": "(datum.y0+datum.y1)/2-4"
+          },
+          "text": {
+            "field": "label"
+          },
+          "opacity": {
+            "signal": "datum.y1-datum.y0 > 20 && datum.x1-datum.x0 > 35 ? 1 : 0"
+          },
+          "align": {
+            "value": "center"
+          },
+          "font": {
+            "value": "Source Sans 3"
+          },
+          "fontSize": {
+            "signal": "datum.x1-datum.x0 > 110 ? 19 : 12"
+          },
+          "fontWeight": {
+            "value": "bold"
+          },
+          "fill": {
+            "value": "#fffefa"
+          },
+          "limit": {
+            "signal": "datum.x1-datum.x0-6"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "leaves"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "(datum.x0+datum.x1)/2"
+          },
+          "y": {
+            "signal": "(datum.y0+datum.y1)/2+16"
+          },
+          "text": {
+            "signal": "format(datum.value/591302,'.1%')"
+          },
+          "align": {
+            "value": "center"
+          },
+          "font": {
+            "value": "Source Sans 3"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fill": {
+            "value": "#fffefa"
+          },
+          "opacity": {
+            "signal": "datum.y1-datum.y0 > 44 && datum.x1-datum.x0 > 35 ? 1 : 0"
+          }
+        }
+      }
+    }
+  ]
+}

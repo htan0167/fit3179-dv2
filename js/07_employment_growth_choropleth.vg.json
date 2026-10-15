@@ -1,0 +1,268 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 410,
+  "background": "#fffefa",
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "config": {
+    "font": "Source Sans 3, Arial, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": "normal",
+      "labelColor": "#64736c",
+      "titleColor": "#203c38",
+      "gridColor": "#e8e7df",
+      "domain": false,
+      "tickColor": "#d6ddd7",
+      "labelPadding": 7,
+      "titlePadding": 12
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": "normal",
+      "labelLimit": 1000,
+      "titleLimit": 1000,
+      "orient": "bottom",
+      "labelColor": "#203c38",
+      "titleColor": "#203c38",
+      "padding": 8
+    },
+    "title": {
+      "fontSize": 14,
+      "anchor": "start",
+      "color": "#203c38"
+    },
+    "text": {
+      "fontSize": 12,
+      "color": "#203c38"
+    }
+  },
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [
+      -18,
+      -36
+    ],
+    "rotate": [
+      -134,
+      0,
+      0
+    ]
+  },
+  "data": {
+    "url": "data/australian-states.topojson",
+    "format": {
+      "type": "topojson",
+      "feature": "australian_states"
+    }
+  },
+  "transform": [
+    {
+      "lookup": "properties.state_code",
+      "from": {
+        "data": {
+          "url": "data/workforce_state_growth.csv",
+          "format": {
+            "type": "csv",
+            "parse": {
+              "employment": "number",
+              "start_year": "number",
+              "lon": "number",
+              "lat": "number",
+              "growth_pct": "number",
+              "baseline": "number"
+            }
+          }
+        },
+        "key": "state_code",
+        "fields": [
+          "growth_pct",
+          "baseline",
+          "employment"
+        ]
+      }
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#fffefa",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "color": {
+          "field": "growth_pct",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -50,
+              0,
+              50
+            ],
+            "range": [
+              "#b45841",
+              "#f7f1df",
+              "#17685f"
+            ]
+          },
+          "legend": {
+            "title": "Change since 2008–09 (%)",
+            "values": [
+              -40,
+              -20,
+              0,
+              20,
+              40
+            ],
+            "format": ".0f",
+            "orient": "bottom"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "properties.name",
+            "type": "nominal",
+            "title": "Jurisdiction"
+          },
+          {
+            "field": "baseline",
+            "type": "quantitative",
+            "title": "2008–09 workers",
+            "format": ","
+          },
+          {
+            "field": "employment",
+            "type": "quantitative",
+            "title": "2023–24 workers",
+            "format": ","
+          },
+          {
+            "field": "growth_pct",
+            "type": "quantitative",
+            "title": "Change (%)",
+            "format": "+.1f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/workforce_state_growth.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "employment": "number",
+            "start_year": "number",
+            "lon": "number",
+            "lat": "number",
+            "growth_pct": "number",
+            "baseline": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "filter": "datum.state_code !== 'ACT'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#203c38"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "state_code"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.growth_pct >= 20",
+            "value": "#fffefa"
+          },
+          "value": "#203c38"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 152.3,
+            "lat": -36,
+            "text": "ACT −2.1%"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 10,
+        "align": "left",
+        "color": "#203c38"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "text"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 149.2,
+            "lat": -35.5,
+            "lon2": 152,
+            "lat2": -36
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#64736c",
+        "strokeWidth": 0.7
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "longitude2": {
+          "field": "lon2"
+        },
+        "latitude2": {
+          "field": "lat2"
+        }
+      }
+    }
+  ]
+}

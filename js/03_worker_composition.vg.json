@@ -1,0 +1,216 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 300,
+  "background": "#fffefa",
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "config": {
+    "font": "Source Sans 3, Arial, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": "normal",
+      "labelColor": "#64736c",
+      "titleColor": "#203c38",
+      "gridColor": "#e8e7df",
+      "domain": false,
+      "tickColor": "#d6ddd7",
+      "labelPadding": 7,
+      "titlePadding": 12
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": "normal",
+      "labelLimit": 1000,
+      "titleLimit": 1000,
+      "orient": "bottom",
+      "labelColor": "#203c38",
+      "titleColor": "#203c38",
+      "padding": 8
+    },
+    "title": {
+      "fontSize": 14,
+      "anchor": "start",
+      "color": "#203c38"
+    },
+    "text": {
+      "fontSize": 12,
+      "color": "#203c38"
+    }
+  },
+  "data": {
+    "url": "data/workforce_roles_long.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "start_year": "number",
+        "workers": "number",
+        "share": "number",
+        "order": "number"
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "area",
+        "stroke": "#fffefa",
+        "strokeWidth": 0.7
+      },
+      "encoding": {
+        "x": {
+          "field": "start_year",
+          "type": "quantitative",
+          "title": "Financial year",
+          "axis": {
+            "values": [
+              2008,
+              2011,
+              2014,
+              2017,
+              2020,
+              2023
+            ],
+            "labelExpr": "datum.value + '–' + slice(toString(datum.value+1),2)",
+            "grid": false
+          }
+        },
+        "y": {
+          "field": "workers",
+          "type": "quantitative",
+          "stack": "normalize",
+          "title": "Share of the cultural & creative workforce",
+          "axis": {
+            "format": ".0%",
+            "tickCount": 5
+          }
+        },
+        "color": {
+          "field": "role",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Specialised",
+              "Embedded",
+              "Support"
+            ],
+            "range": [
+              "#17685f",
+              "#b45841",
+              "#b18736"
+            ]
+          },
+          "legend": {
+            "title": null
+          }
+        },
+        "order": {
+          "field": "order"
+        },
+        "opacity": {
+          "condition": {
+            "param": "rolePick",
+            "value": 1
+          },
+          "value": 0.18
+        },
+        "tooltip": [
+          {
+            "field": "year",
+            "type": "nominal",
+            "title": "Financial year"
+          },
+          {
+            "field": "role",
+            "type": "nominal",
+            "title": "Worker type"
+          },
+          {
+            "field": "workers",
+            "type": "quantitative",
+            "title": "Workers",
+            "format": ","
+          },
+          {
+            "field": "share",
+            "type": "quantitative",
+            "title": "Within-workforce share",
+            "format": ".1%"
+          }
+        ]
+      },
+      "params": [
+        {
+          "name": "rolePick",
+          "select": {
+            "type": "point",
+            "fields": [
+              "role"
+            ]
+          },
+          "bind": "legend"
+        }
+      ]
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "start_year": 2023,
+            "mid": 0.21351695,
+            "label": "Specialised 42.7%"
+          },
+          {
+            "start_year": 2023,
+            "mid": 0.6227503,
+            "label": "Embedded 39.1%"
+          },
+          {
+            "start_year": 2023,
+            "mid": 0.90923335,
+            "label": "Support 18.2%"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -6,
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#fffefa"
+      },
+      "encoding": {
+        "x": {
+          "field": "start_year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "mid",
+          "type": "quantitative",
+          "axis": {
+            "format": ".0%",
+            "tickCount": 5
+          },
+          "scale": {
+            "domain": [
+              0,
+              1
+            ]
+          },
+          "title": "Share of the cultural & creative workforce"
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    }
+  ]
+}

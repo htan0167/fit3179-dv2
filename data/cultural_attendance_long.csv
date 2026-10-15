@@ -1,0 +1,17 @@
+state_code,period,rate,state
+NSW,2017–18,81.1,New South Wales
+NSW,2021–22,61.9,New South Wales
+VIC,2017–18,84.3,Victoria
+VIC,2021–22,60.9,Victoria
+QLD,2017–18,81.0,Queensland
+QLD,2021–22,64.8,Queensland
+SA,2017–18,81.7,South Australia
+SA,2021–22,67.8,South Australia
+WA,2017–18,83.4,Western Australia
+WA,2021–22,69.3,Western Australia
+TAS,2017–18,80.3,Tasmania
+TAS,2021–22,68.0,Tasmania
+NT,2017–18,76.2,Northern Territory
+NT,2021–22,68.8,Northern Territory
+ACT,2017–18,92.5,Australian Capital Territory
+ACT,2021–22,71.6,Australian Capital Territory

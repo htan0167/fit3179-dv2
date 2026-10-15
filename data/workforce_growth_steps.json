@@ -1,0 +1,42 @@
+[
+  {
+    "step": "2008–09",
+    "start": 0,
+    "end": 444486,
+    "value": 444486,
+    "kind": "Total",
+    "next": "Specialised"
+  },
+  {
+    "step": "Specialised",
+    "start": 444486,
+    "end": 515097,
+    "value": 70611,
+    "kind": "Specialised",
+    "next": "Embedded"
+  },
+  {
+    "step": "Embedded",
+    "start": 515097,
+    "end": 580350,
+    "value": 65253,
+    "kind": "Embedded",
+    "next": "Support"
+  },
+  {
+    "step": "Support",
+    "start": 580350,
+    "end": 591302,
+    "value": 10952,
+    "kind": "Support",
+    "next": "2023–24"
+  },
+  {
+    "step": "2023–24",
+    "start": 0,
+    "end": 591302,
+    "value": 591302,
+    "kind": "Total",
+    "next": null
+  }
+]

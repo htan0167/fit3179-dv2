@@ -1,0 +1,192 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 410,
+  "background": "#fffefa",
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "config": {
+    "font": "Source Sans 3, Arial, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": "normal",
+      "labelColor": "#64736c",
+      "titleColor": "#203c38",
+      "gridColor": "#e8e7df",
+      "domain": false,
+      "tickColor": "#d6ddd7",
+      "labelPadding": 7,
+      "titlePadding": 12
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": "normal",
+      "labelLimit": 1000,
+      "titleLimit": 1000,
+      "orient": "bottom",
+      "labelColor": "#203c38",
+      "titleColor": "#203c38",
+      "padding": 8
+    },
+    "title": {
+      "fontSize": 14,
+      "anchor": "start",
+      "color": "#203c38"
+    },
+    "text": {
+      "fontSize": 12,
+      "color": "#203c38"
+    }
+  },
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [
+      -18,
+      -36
+    ],
+    "rotate": [
+      -134,
+      0,
+      0
+    ]
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/australian-states.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "australian_states"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#ecece3",
+        "stroke": "#fffefa",
+        "strokeWidth": 1
+      }
+    },
+    {
+      "data": {
+        "url": "data/workforce_state_latest.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "employment": "number",
+            "start_year": "number",
+            "lon": "number",
+            "lat": "number"
+          }
+        }
+      },
+      "mark": {
+        "type": "circle",
+        "color": "#17685f",
+        "opacity": 0.78,
+        "stroke": "#fffefa",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "employment",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              220000
+            ],
+            "range": [
+              0,
+              2400
+            ]
+          },
+          "legend": {
+            "title": "Workers · circle area",
+            "values": [
+              10000,
+              100000,
+              200000
+            ],
+            "format": "~s",
+            "orient": "bottom"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "Jurisdiction"
+          },
+          {
+            "field": "employment",
+            "type": "quantitative",
+            "title": "Workers",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/workforce_state_latest.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "employment": "number",
+            "start_year": "number",
+            "lon": "number",
+            "lat": "number"
+          }
+        }
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#203c38",
+        "dx": {
+          "expr": "datum.employment < 20000 ? 14 : 0"
+        },
+        "dy": 1,
+        "align": {
+          "expr": "datum.employment < 20000 ? 'left' : 'center'"
+        }
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "state_code"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.employment >= 20000",
+            "value": "#fffefa"
+          },
+          "value": "#203c38"
+        }
+      }
+    }
+  ]
+}

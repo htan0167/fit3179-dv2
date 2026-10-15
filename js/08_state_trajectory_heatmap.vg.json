@@ -1,0 +1,161 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 315,
+  "background": "#fffefa",
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "config": {
+    "font": "Source Sans 3, Arial, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": "normal",
+      "labelColor": "#64736c",
+      "titleColor": "#203c38",
+      "gridColor": "#e8e7df",
+      "domain": false,
+      "tickColor": "#d6ddd7",
+      "labelPadding": 7,
+      "titlePadding": 12
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": "normal",
+      "labelLimit": 1000,
+      "titleLimit": 1000,
+      "orient": "bottom",
+      "labelColor": "#203c38",
+      "titleColor": "#203c38",
+      "padding": 8
+    },
+    "title": {
+      "fontSize": 14,
+      "anchor": "start",
+      "color": "#203c38"
+    },
+    "text": {
+      "fontSize": 12,
+      "color": "#203c38"
+    }
+  },
+  "data": {
+    "url": "data/workforce_state_indices.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "employment": "number",
+        "start_year": "number",
+        "index": "number"
+      }
+    }
+  },
+  "mark": {
+    "type": "rect",
+    "stroke": "#fffefa",
+    "strokeWidth": 2
+  },
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "sort": [
+        "2008-09",
+        "2009-10",
+        "2010-11",
+        "2011-12",
+        "2012-13",
+        "2013-14",
+        "2014-15",
+        "2015-16",
+        "2016-17",
+        "2017-18",
+        "2018-19",
+        "2019-20",
+        "2020-21",
+        "2021-22",
+        "2022-23",
+        "2023-24"
+      ],
+      "title": "Financial year",
+      "axis": {
+        "labelAngle": -40,
+        "labelFontSize": 11
+      }
+    },
+    "y": {
+      "field": "state_code",
+      "type": "nominal",
+      "sort": [
+        "NSW",
+        "VIC",
+        "QLD",
+        "WA",
+        "SA",
+        "TAS",
+        "ACT",
+        "NT"
+      ],
+      "title": null,
+      "axis": {
+        "labelFontWeight": "bold"
+      }
+    },
+    "color": {
+      "field": "index",
+      "type": "quantitative",
+      "scale": {
+        "domain": [
+          65,
+          100,
+          150
+        ],
+        "range": [
+          "#b45841",
+          "#f6f0df",
+          "#17685f"
+        ]
+      },
+      "legend": {
+        "title": "Employment index · each state starts at 100",
+        "values": [
+          70,
+          85,
+          100,
+          125,
+          150
+        ]
+      }
+    },
+    "tooltip": [
+      {
+        "field": "state",
+        "type": "nominal",
+        "title": "Jurisdiction"
+      },
+      {
+        "field": "year",
+        "type": "nominal",
+        "title": "Financial year"
+      },
+      {
+        "field": "employment",
+        "type": "quantitative",
+        "title": "Workers",
+        "format": ","
+      },
+      {
+        "field": "index",
+        "type": "quantitative",
+        "title": "2008–09 = 100",
+        "format": ".1f"
+      }
+    ]
+  }
+}

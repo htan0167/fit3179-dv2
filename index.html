@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An original visual story about Australia's cultural and creative workforce: its growth, the people behind it, its geography, and the wider culture of participation.">
+  <meta name="theme-color" content="#203c38">
+  <title>Beyond the Spotlight | Australia's Cultural &amp; Creative Workforce</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="vendor/vega.min.js"></script>
+  <script defer src="vendor/vega-lite.min.js"></script>
+  <script defer src="vendor/vega-embed.min.js"></script>
+  <script defer src="js/vega_lite_vis.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#scale">Skip to the visual story</a>
+  <header class="masthead">
+    <a class="wordmark" href="#top" aria-label="Beyond the Spotlight, back to top">BTS <span>THE CREATIVE WORKFORCE</span></a>
+    <span class="edition">AUSTRALIA · 2008–2024</span>
+  </header>
+  <main id="top">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <p class="eyebrow">CULTURE IS MORE THAN WHAT WE SEE ON STAGE</p>
+        <h1 id="page-title">Beyond the<br><em>Spotlight.</em></h1>
+        <p class="hero-subtitle">The people, places and participation behind<br>Australia’s cultural &amp; creative economy.</p>
+        <p class="hero-intro">An architect. A designer in a hospital. A technician behind a performance. Creative work reaches beyond the arts sector. This story gives Malaysian readers a clearer view of the jobs behind culture in Australia, and the communities that take part in it.</p>
+        <a class="text-link" href="#scale">Follow the story <span aria-hidden="true">↓</span></a>
+      </div>
+      <aside class="hero-stat" aria-label="Key workforce figures">
+        <div class="stat-rule"></div>
+        <p class="stat-period">2023–24 · MAIN-JOB EMPLOYMENT</p>
+        <p class="stat-number">591<span>,</span>302</p>
+        <p class="stat-label">people in cultural &amp; creative work</p>
+        <div class="stat-pair"><div><strong>+33.0%</strong><span>since 2008–09</span></div><div><strong>4.1%</strong><span>of all employment</span></div></div>
+        <p class="source-mini">BCARR, December 2025 interim estimates · <a href="#source-workforce">Source 1</a></p>
+      </aside>
+    </section>
+
+    <nav class="chapter-nav" aria-label="Story chapters">
+      <a href="#scale"><span>01</span> The scale</a>
+      <a href="#people"><span>02</span> The people</a>
+      <a href="#places"><span>03</span> The places</a>
+      <a href="#participation"><span>04</span> The connection</a>
+    </nav>
+    <p class="reading-note"><strong>How to read:</strong> hover over marks for exact figures. Use the labelled menus and chart legend to compare selected views. Financial years run from July to June; 2023–24 ends in June 2024.</p>
+
+    <section class="chapter" id="scale" aria-labelledby="scale-title">
+      <header class="chapter-heading"><span class="chapter-number">01</span><div><p class="eyebrow">THE SCALE</p><h2 id="scale-title">A larger workforce.<br>A similar share of the economy.</h2></div></header>
+      <p class="chapter-lead">The workforce grew from <strong>444,486 to 591,302</strong> between 2008–09 and 2023–24. Yet its share of all employment moved only from <strong>4.0% to 4.1%</strong>. More people work in culture and creativity, while the rest of the labour market has grown too.</p>
+      <figure class="figure figure-wide" aria-labelledby="trend-title">
+        <figcaption class="figure-heading"><span class="figure-no">01 / TREND</span><h3 id="trend-title">Growth has not been a straight line</h3><p>The 2020–21 decline interrupted a longer rise; 2023–24 is the highest estimate in this series.</p></figcaption>
+        <div id="chart-01" class="chart" data-spec="01_employment_trend" role="group" aria-label="Employment trend with a draggable time overview"></div>
+        <p class="chart-note">Each point is an annual estimate of people employed in their main job. Drag the small overview to focus the chart. <a href="#source-workforce">BCARR · Table 1</a></p>
+      </figure>
+      <figure class="figure figure-wide waffle-figure" aria-labelledby="waffle-title">
+        <figcaption class="figure-heading"><span class="figure-no">02 / PERSPECTIVE</span><h3 id="waffle-title">About 4 in every 100 employed people</h3><p>The highlighted tiles show cultural and creative employment as a share of the whole Australian workforce.</p></figcaption>
+        <div id="chart-02" class="chart" data-spec="02_workforce_waffle" role="group" aria-label="Waffle chart of cultural and creative employment share, with a year menu"></div>
+        <p class="chart-note"><strong>1 tile = 0.1 percentage point</strong>, not an individual worker. Shares use BCARR’s published one-decimal percentages. <a href="#source-workforce">BCARR · Table 1</a></p>
+      </figure>
+    </section>
+
+    <section class="chapter" id="people" aria-labelledby="people-title">
+      <header class="chapter-heading"><span class="chapter-number">02</span><div><p class="eyebrow">THE PEOPLE</p><h2 id="people-title">Creative careers extend<br>beyond creative businesses.</h2></div></header>
+      <p class="chapter-lead">BCARR counts people through both <strong>what they do</strong> and <strong>where they work</strong>. This includes creative professionals in other sectors and the people whose work supports creative organisations.</p>
+      <div class="definition-grid" aria-label="Three workforce categories">
+        <div class="definition specialised"><span class="definition-tag">42.7% · SPECIALISED</span><h3>Creative role.<br>Creative industry.</h3><p>For example, a performer working in a performing arts organisation.</p></div>
+        <div class="definition embedded"><span class="definition-tag">39.1% · EMBEDDED</span><h3>Creative role.<br>Another industry.</h3><p>For example, a graphic designer working in a healthcare organisation.</p></div>
+        <div class="definition support"><span class="definition-tag">18.2% · SUPPORT</span><h3>Another role.<br>Creative industry.</h3><p>For example, an accountant working in a creative business.</p></div>
+      </div>
+      <p class="small-note">Examples illustrate the official definitions; they are not separate observations in the dataset.</p>
+      <figure class="figure figure-wide" aria-labelledby="composition-title">
+        <figcaption class="figure-heading"><span class="figure-no">03 / COMPOSITION</span><h3 id="composition-title">Most workers are in creative occupations</h3><p>Specialised and embedded workers together make up 81.8% in 2023–24. Support work remains an essential part of the total.</p></figcaption>
+        <div id="chart-03" class="chart" data-spec="03_worker_composition" role="group" aria-label="Normalised stacked area chart of workforce composition"></div>
+        <p class="chart-note">Click a legend label to highlight a worker type; Shift-click to select more. Double-click the chart to reset. <a href="#source-workforce">BCARR · Table 1</a></p>
+      </figure>
+      <div class="chart-grid">
+        <figure class="figure figure-wide" aria-labelledby="sankey-title">
+          <figcaption class="figure-heading"><span class="figure-no">04 / CONNECTIONS</span><h3 id="sankey-title">Two ways of looking at the same people</h3><p>Of 591,302 workers, 231,455 use creative skills outside the cultural and creative industries.</p></figcaption>
+          <div class="role-key" aria-hidden="true"><span class="key-specialised">Specialised · 252,506</span><span class="key-embedded">Embedded · 231,455</span><span class="key-support">Support · 107,341</span></div>
+          <div id="chart-04" class="chart" data-spec="04_creative_trident_sankey" role="group" aria-label="Sankey classification of creative occupations and industries"></div>
+          <p class="chart-note">Ribbon thickness represents workers in 2023–24. This is a <strong>classification diagram</strong>; it does not show people moving between jobs. Hover over a ribbon to highlight it. <a href="#source-workforce">BCARR · framework and Table 1</a></p>
+        </figure>
+        <figure class="figure figure-wide" aria-labelledby="waterfall-title">
+          <figcaption class="figure-heading"><span class="figure-no">05 / CONTRIBUTION TO GROWTH</span><h3 id="waterfall-title">Creative occupations supplied most of the increase</h3><p>Specialised work added 70,611 people and embedded work added 65,253; support work added 10,952.</p></figcaption>
+          <div id="chart-05" class="chart" data-spec="05_growth_waterfall" role="group" aria-label="Waterfall showing contributions to workforce growth"></div>
+          <p class="chart-note">The floating steps add to the 2008–09 total to reach 2023–24. These are changes between endpoint estimates, not tracked individual job entries. <a href="#source-workforce">BCARR · Table 1; calculated differences</a></p>
+        </figure>
+      </div>
+    </section>
+
+    <section class="chapter" id="places" aria-labelledby="places-title">
+      <header class="chapter-heading"><span class="chapter-number">03</span><div><p class="eyebrow">THE PLACES</p><h2 id="places-title">The east holds the largest hubs.<br>Growth tells a different story.</h2></div></header>
+      <p class="chapter-lead"><strong>New South Wales and Victoria account for 65.6%</strong> of the national workforce in 2023–24. But employment size and growth are different questions. Victoria grew fastest across the full period; the Northern Territory and ACT finished below their 2008–09 estimates.</p>
+      <div class="chart-grid">
+        <figure class="figure" aria-labelledby="symbol-title">
+          <figcaption class="figure-heading"><span class="figure-no">06 / PROPORTIONAL SYMBOL MAP</span><h3 id="symbol-title">Where are the workers?</h3><p>Larger circle <strong>area</strong> means more workers, not a higher employment rate.</p></figcaption>
+          <div id="chart-06" class="chart" data-spec="06_employment_symbol_map" role="group" aria-label="Proportional symbol map of employment by state"></div>
+          <p class="chart-note">2023–24 jurisdiction totals. Circles sit at schematic state anchors and do not locate individual jobs or cities. <a href="#source-workforce">BCARR · Table 2</a></p>
+        </figure>
+        <figure class="figure" aria-labelledby="growth-title">
+          <figcaption class="figure-heading"><span class="figure-no">07 / CHOROPLETH MAP</span><h3 id="growth-title">Where has employment grown?</h3><p>Colour shows each jurisdiction’s percentage change from its own 2008–09 base.</p></figcaption>
+          <div id="chart-07" class="chart" data-spec="07_employment_growth_choropleth" role="group" aria-label="Choropleth of employment growth from 2008 to 2024"></div>
+          <p class="chart-note">Teal = increase; terracotta = decrease. VIC: <strong>+49.4%</strong>; NT: <strong>−17.0%</strong>. Maps use an equal-area conic projection. <a href="#source-workforce">BCARR · Table 2; calculated growth</a></p>
+        </figure>
+        <figure class="figure figure-wide" aria-labelledby="heatmap-title">
+          <figcaption class="figure-heading"><span class="figure-no">08 / TRAJECTORIES</span><h3 id="heatmap-title">The same national trend contains different local paths</h3><p>Giving each jurisdiction a starting value of 100 makes growth patterns comparable despite very different workforce sizes.</p></figcaption>
+          <div id="chart-08" class="chart" data-spec="08_state_trajectory_heatmap" role="group" aria-label="Heatmap of indexed state employment over sixteen financial years"></div>
+          <p class="chart-note"><strong>100 = the jurisdiction’s 2008–09 workforce.</strong> A value of 125 means 25% more workers than that base; 80 means 20% fewer. This index is not a percentage of national employment. <a href="#source-workforce">BCARR · Table 2; calculated indices</a></p>
+        </figure>
+        <figure class="figure figure-wide" aria-labelledby="treemap-title">
+          <figcaption class="figure-heading"><span class="figure-no">09 / NATIONAL CONCENTRATION</span><h3 id="treemap-title">Nearly two-thirds are in just two states</h3><p>The two eastern centres contain 387,967 workers. Every rectangle below represents a share of the same national workforce.</p></figcaption>
+          <div id="chart-09" class="chart" data-spec="09_workforce_treemap" role="group" aria-label="Treemap of workforce shares, grouping New South Wales and Victoria"></div>
+          <p class="chart-note">Rectangle area encodes worker counts in 2023–24; printed percentages use the published national total. The smallest strip is the Northern Territory (<strong>0.7%</strong>). State estimates sum to one person below the national figure because of rounding. <a href="#source-workforce">BCARR · Tables 1–2</a></p>
+        </figure>
+      </div>
+      <aside class="chapter-takeaway"><span>WHAT THIS MEANS</span><p>A large creative workforce does not automatically mean fast growth. Read the circle map for <strong>scale</strong>, the colour map for <strong>change</strong>, and the heatmap for <strong>the path between the endpoints</strong>.</p></aside>
+    </section>
+
+    <section class="chapter" id="participation" aria-labelledby="participation-title">
+      <header class="chapter-heading"><span class="chapter-number">04</span><div><p class="eyebrow">THE WIDER CONNECTION</p><h2 id="participation-title">Culture reaches further<br>than paid employment.</h2></div></header>
+      <p class="chapter-lead">Employment is only one part of cultural life. An independent ABS survey found that <strong>32.2% of adults participated</strong> in a selected cultural activity in 2021–22. Making culture and attending events show different patterns.</p>
+      <aside class="scope-note"><strong>A change of lens.</strong> The next four charts measure adults aged 15 and over who <em>participate in</em> cultural activities or <em>attend</em> cultural venues and events. They do not measure jobs, and they are not evidence that participation causes employment. The ABS survey periods differ from the workforce series.</aside>
+      <div class="chart-grid">
+        <figure class="figure" aria-labelledby="tile-title">
+          <figcaption class="figure-heading"><span class="figure-no">10 / TILE CARTOGRAM</span><h3 id="tile-title">Small places can participate strongly</h3><p>ACT: <strong>45.4%</strong>; Tasmania: <strong>41.9%</strong> in 2021–22. Equal-sized tiles give every jurisdiction a visible place.</p></figcaption>
+          <div id="chart-10" class="chart" data-spec="10_participation_tile_cartogram" role="group" aria-label="Tile cartogram of adult cultural participation, with a period selector"></div>
+          <p class="chart-note">A schematic map: tile positions broadly follow geography; tile area does not represent land or population. The colour scale stays fixed between survey periods. <a href="#source-activities">ABS · Graph 2</a></p>
+        </figure>
+        <figure class="figure" aria-labelledby="butterfly-title">
+          <figcaption class="figure-heading"><span class="figure-no">11 / AGE &amp; PARTICIPATION</span><h3 id="butterfly-title">Young women report the highest participation</h3><p>Among ages 15–24, <strong>51.6% of women</strong> and <strong>31.8% of men</strong> participated in a selected cultural activity.</p></figcaption>
+          <div id="chart-11" class="chart" data-spec="11_age_sex_butterfly" role="group" aria-label="Butterfly chart of cultural participation by age and sex"></div>
+          <p class="chart-note">2021–22. Bars show the percentage within each age-and-sex group, not its share of all participants. Both sides use the same scale. <a href="#source-activities">ABS · Graph 1 / Table 4</a></p>
+        </figure>
+        <figure class="figure figure-wide" aria-labelledby="attendance-title">
+          <figcaption class="figure-heading"><span class="figure-no">12 / ATTENDANCE</span><h3 id="attendance-title">Attendance fell in every jurisdiction</h3><p>National attendance was 82.4% in 2017–18 and 63.8% in 2021–22. Victoria recorded the largest state-level fall: <strong>23.4 percentage points</strong>.</p></figcaption>
+          <div id="chart-12" class="chart" data-spec="12_attendance_dumbbell" role="group" aria-label="Dumbbell chart comparing attendance across two survey periods"></div>
+          <p class="chart-note">Lines connect the two survey estimates; they do not show change for the same individuals. “pp” means percentage points. The later survey asked about the previous 12 months, spanning July 2020–June 2022 and COVID-19 restrictions. <a href="#source-activities">ABS · Graph 6 / Table 14</a></p>
+        </figure>
+      </div>
+
+        <figure class="figure figure-wide" aria-labelledby="profile-title">
+          <figcaption class="figure-heading"><span class="figure-no">13 / THREE LENSES</span><h3 id="profile-title">The question changes the picture</h3><p>At the common 2021–22 endpoint, Victoria’s workforce had grown 44.2% since 2008–09, while the ACT’s had fallen 20.7%. Yet ACT cultural participation was higher: 45.4%, compared with 33.1% in Victoria.</p></figcaption>
+          <div id="chart-13" class="chart" data-spec="13_state_parallel_coordinates" role="group" aria-label="Parallel coordinates comparing employment growth, participation and attendance by jurisdiction"></div>
+          <p class="chart-note">Follow the highlighted jurisdiction across the three axes. <strong>Each axis has its own labelled scale.</strong> The menu highlights one profile; grey paths provide context. Both sources are joined by jurisdiction under their latest shared year label, 2021–22; the ABS recall window spans 2020–22, so their collection windows differ. Lines connect different measures, not years or people; this comparison does not establish causation. <a href="#source-workforce">BCARR · Table 2</a> and <a href="#source-activities">ABS · Graphs 2 and 6</a></p>
+        </figure>
+      <div class="closing"><p class="eyebrow">BEYOND THE SPOTLIGHT</p><p>A creative economy is made of <em>workers, businesses and communities</em>. The workforce has grown, its jobs reach into other industries, and its geography is uneven. Participation adds a wider view of cultural life—but it remains a different measure.</p></div>
+    </section>
+
+    <footer class="sources" id="sources">
+      <p class="eyebrow">SOURCES &amp; NOTES</p><h2>Where the figures come from</h2>
+      <div class="source-grid">
+        <div id="source-workforce"><h3>01 · Employment</h3><p><strong>Bureau of Communications, Arts and Regional Research (BCARR).</strong> <cite>Measuring Australia’s Cultural and Creative Workforce, 2008–09 to 2023–24</cite>, interim report, December 2025. Released 19 December 2025.</p><p>Tables 1–2: national employment, three worker types, share of all employment, and state/territory estimates. Figures count employment in the main job; secondary jobs are excluded. These are preliminary modelled estimates.</p><a href="https://www.bitre.gov.au/resource/arts/cultural-and-creative-workforce" target="_blank" rel="noopener noreferrer">Official publication page ↗</a> <a href="https://www.bitre.gov.au/sites/default/files/documents/measuring-australias-cultural-and-creative-workforce-2008-09-to-2023-24-december2025.pdf" target="_blank" rel="noopener noreferrer">Full report ↗</a></div>
+        <div id="source-activities"><h3>02 · Participation &amp; attendance</h3><p><strong>Australian Bureau of Statistics (ABS).</strong> <cite>Cultural and creative activities, 2021–22</cite>. Released 21 April 2023; latest release of this series at preparation.</p><p>Graphs 1, 2 and 6: selected adult cultural participation by age/sex and jurisdiction, and attendance by jurisdiction. State comparisons use the 2017–18 and 2021–22 survey periods. These sample-survey estimates are distinct from employment statistics.</p><a href="https://www.abs.gov.au/statistics/people/people-and-communities/cultural-and-creative-activities/2021-22" target="_blank" rel="noopener noreferrer">Official data &amp; downloads ↗</a> <a href="https://www.abs.gov.au/methodologies/cultural-and-creative-activities-methodology/2021-22" target="_blank" rel="noopener noreferrer">Survey methodology ↗</a></div>
+      </div>
+      <details><summary>Data preparation, geography &amp; limitations</summary><p>The four CSVs were transcribed from numerical tables in official publications and reformatted for these charts. Growth, contribution, indices and shares are calculated from those estimates; no additional employment observations were invented. Displayed percentages may differ slightly because of rounding. Workforce and participation datasets are shown as complementary views; they have not been merged into a causal analysis.</p><p>Geographic boundaries: <a href="https://www.naturalearthdata.com/downloads/50m-cultural-vectors/50m-admin-1-states-provinces/" target="_blank" rel="noopener noreferrer">Natural Earth, 1:50m Admin 1 states and provinces</a>, <a href="https://www.naturalearthdata.com/about/terms-of-use/" target="_blank" rel="noopener noreferrer">public domain</a>. Eight Australian jurisdictions were retained and exported as a quantised TopoJSON for fast loading. <a href="https://github.com/nvkelso/natural-earth-vector/blob/master/geojson/ne_50m_admin_1_states_provinces.geojson" target="_blank" rel="noopener noreferrer">Boundary data source ↗</a>. Small territories not represented in the statistical tables are omitted. All charts and diagrams were constructed specifically for this project.</p><p>Typography: <a href="https://github.com/adobe-fonts/source-serif" target="_blank" rel="noopener noreferrer">Adobe Source Serif 4</a> and <a href="https://github.com/adobe-fonts/source-sans" target="_blank" rel="noopener noreferrer">Source Sans 3</a>, distributed under the SIL Open Font License. Fonts and licences are included with this project.</p><p>Abbreviations: NSW = New South Wales; VIC = Victoria; QLD = Queensland; SA = South Australia; WA = Western Australia; TAS = Tasmania; NT = Northern Territory; ACT = Australian Capital Territory.</p><p><a href="data/workforce_trends.csv" download>National CSV</a> · <a href="data/workforce_states.csv" download>State employment CSV</a> · <a href="data/abs_cultural_activity_states.csv" download>State activity CSV</a> · <a href="data/abs_cultural_activity_age_sex.csv" download>Age/sex activity CSV</a></p></details>
+      <details><summary>Readable chart specifications</summary><p>Each chart is built with Vega or Vega-Lite. The complete JSON descriptions are available below and in the js folder of the source repository.</p><ol class="spec-list" id="spec-list"></ol></details>
+      <details><summary>Authorship &amp; AI acknowledgement</summary><p>Created by <strong>Haoyang Tang</strong> · FIT3179 Data Visualisation · Studio 06 · 16 October 2026.</p><p>ChatGPT assisted with data preparation, chart specifications, HTML/CSS/JavaScript, narrative drafting, design and technical checks. Data sources and transformations are documented above and in the accompanying project notes.</p></details>
+      <div class="footer-line"><span>HAOYANG TANG · FIT3179 · 2026</span><a href="#top">Back to top ↑</a></div>
+    </footer>
+  </main>
+  <noscript><p class="noscript">Please enable JavaScript to view the interactive charts. The narrative and source information remain available.</p></noscript>
+</body>
+</html>
