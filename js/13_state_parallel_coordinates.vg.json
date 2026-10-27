@@ -1,11 +1,11 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "width": 880,
-  "height": 360,
+  "height": 390,
   "padding": {
     "left": 14,
     "right": 14,
-    "top": 58,
+    "top": 78,
     "bottom": 15
   },
   "autosize": {
@@ -148,7 +148,8 @@
           "order": 0,
           "title": [
             "Employment growth",
-            "2008–09 to 2021–22 (%)"
+            "2008–09 to",
+            "2021–22 (%)"
           ]
         },
         {
@@ -283,7 +284,7 @@
             "value": "Source Sans 3"
           },
           "fontSize": {
-            "value": 11
+            "value": 13
           },
           "fill": {
             "value": "#64736c"
@@ -303,22 +304,22 @@
             "field": "order"
           },
           "y": {
-            "value": -34
+            "value": -52
           },
           "text": {
             "field": "title"
           },
           "align": {
-            "value": "center"
+            "signal": "datum.order === 0 ? 'left' : datum.order === 2 ? 'right' : 'center'"
           },
           "lineHeight": {
-            "value": 17
+            "value": 18
           },
           "font": {
             "value": "Source Sans 3"
           },
           "fontSize": {
-            "signal": "width < 500 ? 9 : 13"
+            "signal": "width < 500 ? 12 : 15"
           },
           "fill": {
             "value": "#203c38"
@@ -460,7 +461,7 @@
             "value": "Source Sans 3"
           },
           "fontSize": {
-            "value": 12
+            "value": 14
           },
           "fontWeight": {
             "value": "bold"

@@ -61,3 +61,14 @@ REVIEWED EDITION - 16 Oct 2026
 - state_profiles_2021_22.csv: BCARR and ABS joined by state_code at common year 2021-22. Employment growth is relative to 2008-09, participation and attendance are survey rates for 2021-22. Axis positions use explicitly labelled domains [-30,60], [0,50], [0,100]. Lines connect measures, not years or people; no causal relationship is estimated.
 - Source Serif 4 and Source Sans 3 are locally hosted; SIL Open Font Licenses and upstream source links are included.
 - Native Vega implements Sankey, treemap and parallel coordinates. These are original permitted extensions, not claims that their complete code was shown in Studio.
+
+CRITIQUE REVISION - 27 Oct 2026
+- The four original statistical CSVs remain byte-for-byte unchanged.
+- Text, chart labels, legends, controls and references are enlarged. Repeated explanatory text is shortened, retaining measure definitions and limitations.
+- Waffle: 10 blocks of 100 tiles = 1,000 tiles. The highlighted count is round(published share_pct * 10). For 2023-24, 4.1% = 41 highlighted tiles. The percentage, count, selected year and accessible description update together.
+- workforce_state_yearly.csv: the 128 original state-year observations joined to the existing schematic anchors and a numeric financial-year start. No new observations.
+- A 2008-09 to 2023-24 year slider filters only the proportional symbol map. Its size domain stays [0,220000], and NSW/VIC labels and values update with the same year.
+- Trend annotation: 528468 - 546911 = -18443; relative change = -3.3722%, displayed -3.4%. No cause is inferred from this series.
+- NT annotation: 4688 to 3892, a loss of 796 workers or -16.9795%, displayed -17.0%.
+- Attendance timing note follows the ABS statement that the recall period spans July 2020 to June 2022 and may be affected by COVID-19.
+- References remain visible in the footer; the masthead and reading note now link directly to them. Official BCARR and ABS source pages were checked on 27 Oct 2026.

@@ -11,8 +11,8 @@
       "stroke": null
     },
     "axis": {
-      "labelFontSize": 12,
-      "titleFontSize": 12,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "titleFontWeight": "normal",
       "labelColor": "#64736c",
       "titleColor": "#203c38",
@@ -23,8 +23,8 @@
       "titlePadding": 12
     },
     "legend": {
-      "labelFontSize": 12,
-      "titleFontSize": 12,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "titleFontWeight": "normal",
       "labelLimit": 1000,
       "titleLimit": 1000,
@@ -34,12 +34,12 @@
       "padding": 8
     },
     "title": {
-      "fontSize": 14,
+      "fontSize": 16,
       "anchor": "start",
       "color": "#203c38"
     },
     "text": {
-      "fontSize": 12,
+      "fontSize": 14,
       "color": "#203c38"
     }
   },
@@ -61,7 +61,7 @@
   "vconcat": [
     {
       "width": "container",
-      "height": 280,
+      "height": 300,
       "layer": [
         {
           "mark": {
@@ -225,7 +225,7 @@
             "align": "right",
             "dx": -5,
             "dy": -17,
-            "fontSize": 15,
+            "fontSize": 17,
             "fontWeight": "bold",
             "color": "#17685f",
             "clip": true
@@ -294,8 +294,8 @@
             "type": "text",
             "align": "right",
             "dx": -12,
-            "dy": 31,
-            "fontSize": 12,
+            "dy": 34,
+            "fontSize": 14,
             "fontStyle": "italic",
             "color": "#b45841",
             "clip": true
@@ -348,7 +348,7 @@
               }
             },
             "text": {
-              "value": "2020–21: annual decline"
+              "value": "2020–21: −3.4% (18,443 fewer workers)"
             }
           }
         }
@@ -356,7 +356,7 @@
     },
     {
       "width": "container",
-      "height": 48,
+      "height": 62,
       "params": [
         {
           "name": "timeWindow",

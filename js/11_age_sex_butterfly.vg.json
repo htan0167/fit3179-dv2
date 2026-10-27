@@ -13,8 +13,8 @@
       "stroke": null
     },
     "axis": {
-      "labelFontSize": 12,
-      "titleFontSize": 12,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "titleFontWeight": "normal",
       "labelColor": "#64736c",
       "titleColor": "#203c38",
@@ -25,8 +25,8 @@
       "titlePadding": 12
     },
     "legend": {
-      "labelFontSize": 12,
-      "titleFontSize": 12,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "titleFontWeight": "normal",
       "labelLimit": 1000,
       "titleLimit": 1000,
@@ -36,12 +36,12 @@
       "padding": 8
     },
     "title": {
-      "fontSize": 14,
+      "fontSize": 16,
       "anchor": "start",
       "color": "#203c38"
     },
     "text": {
-      "fontSize": 12,
+      "fontSize": 14,
       "color": "#203c38"
     }
   },
@@ -66,7 +66,7 @@
           "field": "signed_pct",
           "type": "quantitative",
           "stack": null,
-          "title": "← Men     Participation rate (%)     Women →",
+          "title": "Participation (%)",
           "scale": {
             "domain": [
               -60,
@@ -152,7 +152,8 @@
       "encoding": {
         "x": {
           "field": "zero",
-          "type": "quantitative"
+          "type": "quantitative",
+          "title": "Participation (%)"
         }
       }
     },
@@ -165,13 +166,14 @@
       ],
       "mark": {
         "type": "text",
-        "fontSize": 10,
+        "fontSize": 13,
         "color": "#fffefa"
       },
       "encoding": {
         "x": {
           "field": "label_x",
-          "type": "quantitative"
+          "type": "quantitative",
+          "title": "Participation (%)"
         },
         "y": {
           "field": "age",

@@ -153,7 +153,7 @@
             "value": "Source Sans 3"
           },
           "fontSize": {
-            "value": 12
+            "value": 14
           },
           "fill": {
             "value": "#203c38"
@@ -193,7 +193,7 @@
             "value": "Source Sans 3"
           },
           "fontSize": {
-            "signal": "datum.x1-datum.x0 > 110 ? 19 : 12"
+            "signal": "datum.x1-datum.x0 > 110 ? 21 : 14"
           },
           "fontWeight": {
             "value": "bold"
@@ -230,7 +230,7 @@
             "value": "Source Sans 3"
           },
           "fontSize": {
-            "value": 12
+            "value": 14
           },
           "fill": {
             "value": "#fffefa"

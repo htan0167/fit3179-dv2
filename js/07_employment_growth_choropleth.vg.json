@@ -13,8 +13,8 @@
       "stroke": null
     },
     "axis": {
-      "labelFontSize": 12,
-      "titleFontSize": 12,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "titleFontWeight": "normal",
       "labelColor": "#64736c",
       "titleColor": "#203c38",
@@ -25,8 +25,8 @@
       "titlePadding": 12
     },
     "legend": {
-      "labelFontSize": 12,
-      "titleFontSize": 12,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "titleFontWeight": "normal",
       "labelLimit": 1000,
       "titleLimit": 1000,
@@ -36,12 +36,12 @@
       "padding": 8
     },
     "title": {
-      "fontSize": 14,
+      "fontSize": 16,
       "anchor": "start",
       "color": "#203c38"
     },
     "text": {
-      "fontSize": 12,
+      "fontSize": 14,
       "color": "#203c38"
     }
   },
@@ -176,7 +176,7 @@
       ],
       "mark": {
         "type": "text",
-        "fontSize": 11,
+        "fontSize": 13,
         "fontWeight": "bold",
         "color": "#203c38"
       },
@@ -206,15 +206,15 @@
         "values": [
           {
             "lon": 152.3,
-            "lat": -36,
+            "lat": -39.7,
             "text": "ACT −2.1%"
           }
         ]
       },
       "mark": {
         "type": "text",
-        "fontSize": 10,
-        "align": "left",
+        "fontSize": 13,
+        "align": "right",
         "color": "#203c38"
       },
       "encoding": {
@@ -238,7 +238,7 @@
             "lon": 149.2,
             "lat": -35.5,
             "lon2": 152,
-            "lat2": -36
+            "lat2": -39.4
           }
         ]
       },

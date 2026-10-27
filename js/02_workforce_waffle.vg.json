@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
-  "height": 255,
+  "height": 420,
   "background": "#fffefa",
   "autosize": {
     "type": "fit",
@@ -13,8 +13,8 @@
       "stroke": null
     },
     "axis": {
-      "labelFontSize": 12,
-      "titleFontSize": 12,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "titleFontWeight": "normal",
       "labelColor": "#64736c",
       "titleColor": "#203c38",
@@ -25,8 +25,8 @@
       "titlePadding": 12
     },
     "legend": {
-      "labelFontSize": 12,
-      "titleFontSize": 12,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "titleFontWeight": "normal",
       "labelLimit": 1000,
       "titleLimit": 1000,
@@ -36,12 +36,12 @@
       "padding": 8
     },
     "title": {
-      "fontSize": 14,
+      "fontSize": 16,
       "anchor": "start",
       "color": "#203c38"
     },
     "text": {
-      "fontSize": 12,
+      "fontSize": 14,
       "color": "#203c38"
     }
   },
@@ -109,19 +109,19 @@
       }
     },
     {
-      "calculate": "datum.unit % 50",
+      "calculate": "(floor(datum.unit / 100) % 5) * 12 + datum.unit % 10",
       "as": "col"
     },
     {
-      "calculate": "floor(datum.unit / 50)",
+      "calculate": "floor(datum.unit / 500) * 12 + floor((datum.unit % 100) / 10)",
       "as": "row"
     },
     {
-      "calculate": "datum.col + 0.83",
+      "calculate": "datum.col + 0.84",
       "as": "col2"
     },
     {
-      "calculate": "datum.row + 0.80",
+      "calculate": "datum.row + 0.84",
       "as": "row2"
     },
     {
@@ -140,7 +140,7 @@
       "scale": {
         "domain": [
           0,
-          50
+          58
         ]
       }
     },
@@ -154,7 +154,7 @@
       "scale": {
         "domain": [
           0,
-          20
+          22
         ],
         "reverse": true
       }
